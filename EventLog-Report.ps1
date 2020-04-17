@@ -9,17 +9,16 @@ Param(
     [string]$Path
 )
 
-#get event log data and group it
 $data = Get-EventLog -LogName $Log -EntryType Error -Newest $Newest -ComputerName $Computername |
     Group-Object -Property Source -NoElement
 
-#create an HTML report
+# Create an HTML report
 $footer = "<h5><i>Report run on $(Get-Date)</i></h5>"
 $precontent = "<h1>$Computername</h1><h2>Last $Newest error sources from $Log</h2>"
 
 $data | Sort-Object -Property Count,Name -Descending |
     Select-Object Count,Name |
-    ConvertTo-Html -Title $ReportTitle -PreContent $precontent -PostContent $footer -CssUri $css |
+    ConvertTo-Html -Title $ReportTitle -PreContent $precontent -PostContent $footer |
     Out-File -FilePath $Path
-    
+
 #.\paramscript.ps1 -Path .\systemresources.html
