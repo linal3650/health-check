@@ -1,8 +1,7 @@
 # Get disk usage information and export it to a CSV file for trend reporting
 
 Param (
-    #[string[]]$Computername = $env:COMPUTERNAME
-    [string]$Computername = $env:COMPUTERNAME    
+    [string[]]$Computername = $env:COMPUTERNAME    # takes multiple arguments from command line
 )
 
 # path to CSV file is hard coded
