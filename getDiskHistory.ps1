@@ -49,4 +49,4 @@ else {
 }
 
 #sample usage
-# .\GetDiskHistory.ps1 -Computername DOM1,FOO,Srv1,srv2
+# .\GetDiskHistory.ps1 -Computername ABC,DEF,GHI,JKL
